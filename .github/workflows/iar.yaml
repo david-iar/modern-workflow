@@ -12,8 +12,8 @@ env:
   IAR_LMS_BEARER_TOKEN: ${{ secrets.IAR_LMS_BEARER_TOKEN }}
 
 jobs:
-  build:
-    name: Build
+  build-lnx:
+    name: Build-lnx
     runs-on: ubuntu-24.04
     container:
       image: ghcr.io/iarsystems/arm:9.70.1-st
@@ -26,6 +26,15 @@ jobs:
       run: cmake --preset cxarm-linux
     - name: CMake - Build
       run: cmake --build build --config Debug --verbose
+
+  build-win:
+    name: Build-win
+    runs-on: windows-latest
+    container:
+      image: ghcr.io/iarsystems/arm:9.70.1-st
+    steps:
+    - name: Invoke the IAR C/C++ Compiler for Arm
+      run: iccarm --version  
 
   verify:
     name: Verify
