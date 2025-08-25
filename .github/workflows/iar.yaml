@@ -34,7 +34,9 @@ jobs:
       image: ghcr.io/iarsystems/arm:9.70.1-st
     steps:
     - name: Invoke the IAR C/C++ Compiler for Arm
-      run: iccarm --version  
+      run: iccarm --version 
+    - name: check CMake version  
+      run: cmake --version
 
   verify:
     name: Verify
