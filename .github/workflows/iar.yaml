@@ -40,7 +40,7 @@ jobs:
 
   verify:
     name: Verify
-    needs: build
+    needs: build-lnx
     runs-on: ubuntu-24.04
     container:
       image: ghcr.io/iarsystems/arm:9.70.1-st
